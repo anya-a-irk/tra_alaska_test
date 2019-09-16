@@ -10,4 +10,4 @@ When the container starts, the application starts, available inside the containe
 ```docker run -p 8091:8091 -it azshoo/alaska:1.0```
 
 ## Test-cases:
-[Test-cases description](https://hackmd.io/s/BJpxPN38B) 
+[Test-cases description](https://github.com/anya-a-irk/tra_alaska_test/blob/master/test-cases.md) 
