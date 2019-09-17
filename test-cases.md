@@ -27,12 +27,12 @@ docker azshoo/alaska с сервисом развернут и корректн�
 
 **Ожидаемый результат**
 
-|Вводимое значение | Ожидаемый результат |
-| --- | --- |
-| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"POLAR","bear_name":"MISHA","bear_age":13}'```| ```status code 200; 1;  [{"bear_id":1,"bear_type":"POLAR","bear_name":"MISHA","bear_age":13}]```
-| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"BROWN","bear_name":"MISHA","bear_age":13}'``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"BROWN","bear_name":"MISHA","bear_age":13}]``` |
-| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"BLACK","bear_name":"MISHA","bear_age":13}'``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"BLACK","bear_name":"MISHA","bear_age":13}]``` |
-| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"GUMMY","bear_name":"MISHA","bear_age":13}'``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"GUMMY","bear_name":"MISHA","bear_age":13}]``` |
+|Вводимое значение | Ожидаемый результат | Полученный результат |
+| --- | --- | --- |
+| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"POLAR","bear_name":"MISHA","bear_age":13}'```| ```status code 200; 1;  [{"bear_id":1,"bear_type":"POLAR","bear_name":"MISHA","bear_age":13}]```| ```status code 200; 1;  [{"bear_id":1,"bear_type":"POLAR","bear_name":"MISHA","bear_age":13.0}]```|
+| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"BROWN","bear_name":"MISHA","bear_age":13}'``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"BROWN","bear_name":"MISHA","bear_age":13}]``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"BROWN","bear_name":"MISHA","bear_age":13.0}]``` |
+| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"BLACK","bear_name":"MISHA","bear_age":13}'``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"BLACK","bear_name":"MISHA","bear_age":13}]``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"BLACK","bear_name":"MISHA","bear_age":13.0}]``` |
+| ```curl -X POST -i 'http://172.17.0.1:8091/bear' --data '{"bear_type":"GUMMY","bear_name":"MISHA","bear_age":13}'``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"GUMMY","bear_name":"MISHA","bear_age":13}]``` | ```status code 200; 1; [{"bear_id":1,"bear_type":"UNKNOWN","bear_name":"EMPTY_NAME","bear_age":0.0}]```
 
 ### Тест-кейс № 3. Cоздать медведя с незаполненными полями
 
@@ -183,7 +183,11 @@ docker azshoo/alaska с сервисом развернут и корректн�
 
 **Ожидаемый результат**
 
-```status code 200; [{"bear_id":id,"bear_type":"BLACK","bear_name":"mikhail","bear_age":17.5}]```
+```status code 200; [{"bear_id":1,"bear_type":"BLACK","bear_name":"mikhail","bear_age":17.5}]```
+
+**Полученный результат**
+
+```status code 200; [{"bear_id":1,"bear_type":"POLAR","bear_name":"mikhail","bear_age":13.0}]```
 
 ### Тест-кейс № 13. Обновить информацию о несуществующем медведе
 
